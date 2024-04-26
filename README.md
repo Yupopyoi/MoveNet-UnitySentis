@@ -1,8 +1,8 @@
 # MoveNet with Unity.Sentis
 This is a sample of MoveNet in action on Unity.Sentis.
 
-I use the model shown below.
-https://www.kaggle.com/models/google/movenet/tensorFlow2/singlepose-lightning/4?tfhub-redirect=true
+I use the model shown below.  
+https://www.kaggle.com/models/google/movenet/tensorFlow2/singlepose-lightning/4?tfhub-redirect=true  
 https://www.kaggle.com/models/google/movenet/tensorFlow2/singlepose-thunder/4?tfhub-redirect=true
 
 # Requirement
