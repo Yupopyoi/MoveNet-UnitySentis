@@ -1,0 +1,44 @@
+#pragma kernel Preprocess
+
+sampler2D Image;
+RWStructuredBuffer<float> Tensor;
+RWTexture2D<float3> processedImage;
+uint Size;
+
+#define FLT_EPSILON 1.192092896e-07
+
+float3 PositivePow(float3 base, float3 power)
+{
+    return pow(max(abs(base), float3(FLT_EPSILON, FLT_EPSILON, FLT_EPSILON)), power);
+}
+
+float3 LinearToSRGB(float3 color)
+{
+    float3 sRGBLo = color * 12.92;
+    float3 sRGBHi = (PositivePow(color, float3(1.0 / 2.4, 1.0 / 2.4, 1.0 / 2.4)) * 1.055) - 0.055;
+    float3 sRGB = (color <= 0.0031308) ? sRGBLo : sRGBHi;
+    return sRGB;
+}
+
+[numthreads(8, 8, 1)]
+void Preprocess(uint2 id : SV_DispatchThreadID)
+{
+    // UV
+    float2 uv = float2(0.5 + id.x, 0.5 + id.y) / Size;
+
+    // UV gradients
+    float2 duv_dx = float2(1.0 / Size, 0);
+    float2 duv_dy = float2(0, -1.0 / Size);
+
+    // Texture sample
+    float3 rgb = tex2D(Image, uv, duv_dx, duv_dy).rgb;
+    rgb = LinearToSRGB(rgb);
+    
+    // Tensor element output
+    uint offs = (id.y * Size + id.x) * 3;
+    Tensor[offs + 0] = rgb.r;
+    Tensor[offs + 1] = rgb.g;
+    Tensor[offs + 2] = rgb.b;
+    
+    processedImage[id] = float3(rgb.r, rgb.g, rgb.b);
+}

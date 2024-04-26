@@ -1,0 +1,17 @@
+[I/O (Thunder)]
+Inputs : 1*256*256*3 (3 = RGB [0-255])
+Outputs : 1*1*17*3 (3 = y,x,score)
+
+[Key Points]
+Nose
+Left and right eye
+Left and right ear
+Left and right shoulder
+Left and right elbow
+Left and right wrist
+Left and right hip
+Left and right knee
+Left and right ankle
+
+[Model Card]
+https://storage.googleapis.com/movenet/MoveNet.SinglePose%20Model%20Card.pdf
