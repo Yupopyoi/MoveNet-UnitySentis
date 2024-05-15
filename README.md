@@ -11,6 +11,10 @@ This detects 17 keypoints and displays markers on the input image based on their
 I used this picture for the reference image.  
 https://www.photo-ac.com/main/detail/265667  
 
+I referred to the scripts in this repository.  
+https://github.com/keijiro/YoloV4TinyBarracuda.git  
+I rewrote these scripts for sentis.
+
 # Requirement
 
 Unity : 2023.2.18f1  
