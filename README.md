@@ -20,5 +20,10 @@ I rewrote these scripts for sentis.
 Unity : 2023.2.18f1  
 Sentis : Sentis 1.4.0-pre.3
 
+# Explanation
+
+See this site for an explanation. (Japanese Only)
+https://qiita.com/Yupopyoi/items/ff917b051eac69bebc57
+
 # License
 MoveNet-UnitySentis is under Apache-2.0 License.
